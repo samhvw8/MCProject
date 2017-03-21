@@ -11,11 +11,12 @@ router.get('/', function (req, res, next) {
     //	->	Display the index view with the video tag
     //
 
-    let files = fs.readdirSync('./data');
+    let data = fs.readFileSync('./public/data.json');
 
+    let obj = JSON.parse(data);
 
-    res.render("all", {
-        test: files
+    res.render("index", {
+        test: obj['data']
     });
 
 });

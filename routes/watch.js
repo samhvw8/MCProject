@@ -2,12 +2,12 @@ let express = require('express');
 
 let router = express.Router();
 
-router.get('/watch/:v', function (req, res, next) {
+router.get('/:v', function (req, res, next) {
 
     //
     //	->	Display the index view with the video tag
     //
-    res.render("index", {
+    res.render("watch", {
         title: 'Movie',
         url: req.params.v
     });

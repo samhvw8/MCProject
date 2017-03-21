@@ -16,8 +16,8 @@ app.use(force_https);
 //
 //	Expose the public folder to the world
 //
-app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/static', express.static(path.join(__dirname, 'public')));
 //
 //	Remove the information about what type of framework is the site running on
 //
@@ -42,6 +42,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/', require('./routes/index'));
 app.use('/video', require('./routes/video'));
+app.use('/watch', require('./routes/watch'));
 
 //////////////////////////////////////////////////////////////////////////////
 

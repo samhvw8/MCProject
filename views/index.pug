@@ -5,7 +5,8 @@ html
     head
         title= "test"
     body
-        ul
-            each val in test
-                li
-                    a(class='button', href="/watch/"val)= val
+
+        each val in test
+            div
+                a(href="/watch/" + val.video)= val.name
+                    img(src="/static/" + val.img height="200")
