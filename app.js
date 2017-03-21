@@ -135,4 +135,6 @@ function force_https(req, res, next) {
     next();
 }
 
-module.exports = app;
+let port = process.env.PORT || 8001;        // set our port
+
+app.listen(port);
