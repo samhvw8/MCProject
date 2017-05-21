@@ -1,10 +1,16 @@
-//
-   Created by samhv on 3/21/17.
-
-html
-    head
-        title= title
-    body
-
+extends layout.pug
+append css-js
+    if hd
+        script(src='/js/changeQuality.js')
+append content
+    div
         center
-            video(src="/video/"+url controls width="720" height="480")
+            h1  #{title}
+    if hd
+        .row
+            button(class='button btn-primary btn-xs', id='hd-btn') HD
+        div.row
+            video(src="/video/" + _360p controls width="750px" height="auto" data-hd="/video/" + _hd id='video-player')
+    else
+        div.row
+            video(src="/video/" + _hd controls width="750px" height="auto" id='video-player')

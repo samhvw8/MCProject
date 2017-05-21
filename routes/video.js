@@ -13,7 +13,7 @@ router.get('/:name', function (req, res, next) {
     //	1.	Path to the movie to stream
     //
 
-    let file = "./public/" + req.params.name;
+    let file = "./storage/" + req.params.name;
 
     //
     //	2.	Get meta information from the file. In this case we are interested

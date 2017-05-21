@@ -2,8 +2,10 @@ let path = require('path');
 let logger = require('morgan');
 let express = require('express');
 let bodyParser = require('body-parser');
+let sassMiddleware = require('node-sass-middleware');
 
 let app = express();
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -17,7 +19,19 @@ app.use(force_https);
 //	Expose the public folder to the world
 //
 
-app.use('/static', express.static(path.join(__dirname, 'public')));
+app.use(
+    sassMiddleware({
+        src: __dirname + '/sass',
+        dest: __dirname + '/public',
+        debug: true,
+    })
+);
+
+app.use('/', express.static(path.join(__dirname, 'public')));
+
+app.use('/js', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/js'))); // redirect bootstrap JS
+app.use('/js', express.static(path.join(__dirname, '/node_modules/jquery/dist'))); // redirect JS jQuery
+app.use('/css', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/css')));
 //
 //	Remove the information about what type of framework is the site running on
 //
@@ -138,4 +152,5 @@ function force_https(req, res, next) {
 
 let port = process.env.PORT || 3000;        // set our port
 
-app.listen(port);
+app.set(port);
+module.exports = app;

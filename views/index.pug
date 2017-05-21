@@ -1,12 +1,13 @@
-//
-   Created by samhv on 3/21/17.
-
-html
-    head
-        title= "test"
-    body
-
-        each val in test
-            div
-                a(href="/watch/" + val.video)= val.name
-                    img(src="/static/" + val.img height="200")
+extends ./layout.pug
+append css-js
+    script(src='/js/index.js')
+    link(rel="stylesheet", href="/css/index.css")
+block content
+    section#videos-contaner
+        ul.u-fancy-load
+            each val in videos
+                li
+                    div(class='video-card' data-link="/watch/" + val.video)
+                        img(class="video-preview" src="/" + val.img )
+                        div(class='video-title')
+                            h5 #{val.name}
