@@ -1,0 +1,13 @@
+extends ./layout.pug
+block content
+    if flash
+        div(class='alert alert-' + msgType)
+            p #{msg}
+    form(method='post', enctype='multipart/form-data', class='form-group')
+        div.form-group
+            label Title
+            input(type='title', id='title', name='title' , class='form-control', required=true)
+        div.form-group
+            lable File
+            input(type='file', id='file', name='videoupload', class='form-control' , required=true)
+        input(type='submit', name='uploadvideo', value='Upload Image', class='form-control')

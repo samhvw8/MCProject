@@ -57,6 +57,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use('/', require('./routes/index'));
 app.use('/video', require('./routes/video'));
 app.use('/watch', require('./routes/watch'));
+app.use('/upload', require('./routes/upload'));
 
 //////////////////////////////////////////////////////////////////////////////
 
